@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  .font-brand {
+    font-family: 'Cinzel', serif;
+  }
+  .font-mono-receipt {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom thermal receipt printing rules */
+@media print {
+  /* Hide standard page elements */
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Only show the KOT thermal ticket */
+  #kot-thermal-ticket, #kot-thermal-ticket * {
+    visibility: visible;
+  }
+
+  #kot-thermal-ticket {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 2mm !important;
+    color: #000000 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  @page {
+    margin: 0;
+    size: auto;
+  }
+}
